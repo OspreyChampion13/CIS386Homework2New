@@ -1,7 +1,39 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import java.util.Scanner
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main() {
+    checkOddOrEven()
+    checkPalindrome()
+}
+
+fun checkOddOrEven() {
+    val scanner = Scanner(System.`in`)
+    print("Enter a number to check if it's odd or even: ")
+    val number = scanner.nextInt()
+
+    if (isEven(number)) {
+        println("$number is even.")
+    } else {
+        println("$number is odd.")
+    }
+}
+
+fun isEven(number: Int): Boolean {
+    return number % 2 == 0
+}
+
+fun checkPalindrome() {
+    val scanner = Scanner(System.`in`)
+    print("Enter a string to check if it's a palindrome: ")
+    val inputString = scanner.nextLine().toLowerCase()
+
+    if (isPalindrome(inputString)) {
+        println("$inputString is a palindrome.")
+    } else {
+        println("$inputString is not a palindrome.")
+    }
+}
+
+fun isPalindrome(str: String): Boolean {
+    val cleanStr = str.replace("\\s+".toRegex(), "")
+    return cleanStr == cleanStr.reversed()
 }
